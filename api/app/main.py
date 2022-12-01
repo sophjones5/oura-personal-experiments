@@ -9,14 +9,13 @@ import time
 app = FastAPI()
 
 class User(BaseModel):
-    UID: int
     Auth_token: Optional[str] = None
     Authenticated: Optional[bool] = False
-    Experiment: str
+    Experiment: Optional[str]
     Name: str
     Email: str
-    Experiment_Classification_dict: dict
-    Created_at: datetime
+    Experiment_Classification_dict: Optional[dict]
+    Created_at: Optional[datetime]
 
 #----------database connection----------
 text_file = open("app/password.txt", "r")
@@ -37,19 +36,24 @@ while True:
 #----------api endpoints----------
 @app.get("/users")
 def get_all_users():
-    return {"User": "Name"}
+    cursor.execute("""SELECT * FROM public."User" """)
+    users = cursor.fetchall()
+    return {"Data": users}
 
 @app.post("/users", status_code=status.HTTP_201_CREATED)
 def create_user(user :User):
-    print(user)
-    print(user.dict())
-    return{'user created':user.Name}
+    cursor.execute("""INSERT INTO public."User" ("Name", "Email") VALUES (%s,%s) RETURNING * """, (user.Name, user.Email))
+    new_user = cursor.fetchone()
+    conn.commit()
+    return{'new user':new_user}
 
 @app.get("/users/{id}")
 def get_user(id: int, response:Response):
+    cursor.execute("""SELECT * FROM public."User" WHERE "UID" = %s """, (str(id)))
+    user = cursor.fetchone()
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail = f'user with id: {id} was not found')
-    return {'User id':id}
+    return {'User':user}
 
 @app.delete("/users/{id}", status_code= status.HTTP_204_NO_CONTENT)
 def delete_user(id):
