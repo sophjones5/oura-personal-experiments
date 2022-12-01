@@ -47,8 +47,18 @@ tracking examples:
 lifestyle optimisation and analytics 
 - correlation is not causation but useful tool to shed awareness
 
-mvp - use my persoanl token - display analyti
+mvp - use my persoanl token - display analytics on one experiemnt
 
 v1
 
 v2 - authentication
+
+table
+user id | Experiment 1
+
+
+fast api
+python
+postgres
+pydantic schema
+psychopg2 postgress connection
