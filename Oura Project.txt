@@ -1,0 +1,54 @@
+Oura Project
+
+-sign in and has user table
+-daily update my db - eg sleep data etc
+-website locally that connects with api to my db 
+
+-log in
+-daily answer specific questions
+-updates variables table
+
+
+-stress indicators
+-dispalys stress on graph
+-hpw can i reduce
+-experiemnts and the effect
+
+
+can make an application for others
+
+
+- recovery index
+- correlation of external foctors with internal effects
+- ideal workout time of daily
+- coffee
+- emotions - stress, period, sleep
+- what effects ovulation day?
+
+- make website to track extra data and log in to aura ring
+- also uses an api to display user info and results
+- all collected in designed db on back end - etl pipeline
+- analytics - displayed as a results - email or report
+
+-cicd - testing - git hub actions - deployment to cloud (aws)
+-api - for displaying results?
+
+customisable - can be true of false or have up to 5 options
+tracking examples:
+- coffee, 0, 1, 2
+- emotions (dict map)
+- meditation - T/F
+- red light - T/F
+- workout time of day - 1 - morning, 2 middle, 3 evening
+- screen time - rounded in hours
+- social - T/F
+- see water
+
+lifestyle optimisation and analytics 
+- correlation is not causation but useful tool to shed awareness
+
+mvp - use my persoanl token - display analyti
+
+v1
+
+v2 - authentication
